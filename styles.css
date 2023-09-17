@@ -13,3 +13,17 @@
 .form-signin .form-floating:focus-within {
   z-index: 2;
 }
+
+.product {
+  scale: 1;
+  transition: scale 300ms;
+}
+
+.product:hover {
+  scale: 1.05;
+}
+
+.product img {
+  height: 10em;
+  object-fit: cover;
+}
