@@ -16,6 +16,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="./home.js" defer></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -37,7 +38,10 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarSupportedContent"
+        >
           <ul class="mr-auto navbar-nav">
             <li class="nav-item active">
               <a class="nav-link" href="/">Inicio</a>
@@ -71,15 +75,21 @@
               <a class="nav-link" href="/admin.html">Admin</a>
             </li>
           </ul>
-          <form class="gap-2 my-2 form-inline my-lg-0 d-flex align-items-center">
-            <a class="nav-link text-primary" href="/contact.html">Contáctanos</a>
+          <form
+            class="gap-2 my-2 form-inline my-lg-0 d-flex align-items-center"
+          >
+            <a class="nav-link text-primary" href="/contact.html"
+              >Contáctanos</a
+            >
             <input
               class="form-control mr-sm-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="my-2 btn btn-outline-success my-sm-0" type="submit">Search</button>
+            <button class="my-2 btn btn-outline-success my-sm-0" type="submit">
+              Search
+            </button>
           </form>
         </div>
       </div>
@@ -88,6 +98,7 @@
     <!-- Tienda -->
     <div class="container mt-5 text-center">
       <div class="gap-3 row">
+        <div id="info"></div>
         <div class="col">
           <div class="card product" style="width: 18rem">
             <img
@@ -97,7 +108,7 @@
               <h5 class="card-title">Portatil HP</h5>
               <p class="card-text">Computadores Portátiles</p>
               <p class="card-text fw-bold text-success">$3.500.000</p>
-              <a href="#" class="btn btn-primary">Añadir</a>
+              <button class="btn btn-primary" id="producto1">Añadir</button>
             </div>
           </div>
         </div>
@@ -110,20 +121,20 @@
               <h5 class="card-title">iPad 7ma Generación</h5>
               <p class="card-text">Tablets</p>
               <p class="card-text fw-bold text-success">$2.100.000</p>
-              <a href="#" class="btn btn-primary">Añadir</a>
+              <button class="btn btn-primary" id="producto2">Añadir</button>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="col">
             <div class="card product" style="width: 18rem">
-              <img src="https://m.media-amazon.com/images/I/512ob63RWdL.jpg" class="card-img-top"
-              alt=portail_hp" />
+              <img src="https://m.media-amazon.com/images/I/512ob63RWdL.jpg"
+              class="card-img-top" alt=portail_hp" />
               <div class="card-body">
                 <h5 class="card-title">iPad Pencil</h5>
                 <p class="card-text">Accesorios</p>
                 <p class="card-text fw-bold text-success">$729.000</p>
-                <a href="#" class="btn btn-primary">Añadir</a>
+                <button class="btn btn-primary" id="producto3">Añadir</button>
               </div>
             </div>
           </div>
@@ -131,13 +142,14 @@
         <div class="col">
           <div class="col">
             <div class="card product" style="width: 18rem">
-              <img src="https://smartjoys.co/wp-content/uploads/2022/12/Airpods3-10.jpg.webp"
+              <img
+              src="https://smartjoys.co/wp-content/uploads/2022/12/Airpods3-10.jpg.webp"
               class="card-img-top" alt=portail_hp" />
               <div class="card-body">
                 <h5 class="card-title">Airpods 3</h5>
                 <p class="card-text">Accesorios</p>
                 <p class="card-text fw-bold text-success">$1.185.000</p>
-                <a href="#" class="btn btn-primary">Añadir</a>
+                <button class="btn btn-primary" id="producto4">Añadir</button>
               </div>
             </div>
           </div>
@@ -145,13 +157,14 @@
         <div class="col">
           <div class="col">
             <div class="card product" style="width: 18rem">
-              <img src="https://www.lg.com/co/images/monitores/md07570237/gallery/dz1.jpg"
+              <img
+              src="https://www.lg.com/co/images/monitores/md07570237/gallery/dz1.jpg"
               class="card-img-top" alt=portail_hp" />
               <div class="card-body">
                 <h5 class="card-title">Monitor 27" LG</h5>
                 <p class="card-text">Monitores</p>
                 <p class="card-text fw-bold text-success">$2.400.000</p>
-                <a href="#" class="btn btn-primary">Añadir</a>
+                <button class="btn btn-primary" id="producto5">Añadir</button>
               </div>
             </div>
           </div>
@@ -159,13 +172,14 @@
         <div class="col">
           <div class="col">
             <div class="card product" style="width: 18rem">
-              <img src="https://m.media-amazon.com/images/I/8196nDEwHnL._AC_UF1000,1000_QL80_.jpg"
+              <img
+              src="https://m.media-amazon.com/images/I/8196nDEwHnL._AC_UF1000,1000_QL80_.jpg"
               class="card-img-top" alt=portail_hp" />
               <div class="card-body">
                 <h5 class="card-title">Teclado Mecánico Gamer</h5>
                 <p class="card-text">Accesorios</p>
                 <p class="card-text fw-bold text-success">$269.000</p>
-                <a href="#" class="btn btn-primary">Añadir</a>
+                <button class="btn btn-primary" id="producto6">Añadir</button>
               </div>
             </div>
           </div>
@@ -173,13 +187,13 @@
         <div class="col">
           <div class="col">
             <div class="card product" style="width: 18rem">
-              <img src="https://m.media-amazon.com/images/I/61lCLrCtuhL.jpg" class="card-img-top"
-              alt=portail_hp" />
+              <img src="https://m.media-amazon.com/images/I/61lCLrCtuhL.jpg"
+              class="card-img-top" alt=portail_hp" />
               <div class="card-body">
                 <h5 class="card-title">Ratón Gamer</h5>
                 <p class="card-text">Accesorios</p>
                 <p class="card-text fw-bold text-success">$130.000</p>
-                <a href="#" class="btn btn-primary">Añadir</a>
+                <button class="btn btn-primary" id="producto7">Añadir</button>
               </div>
             </div>
           </div>
@@ -194,7 +208,7 @@
                 <h5 class="card-title">Cable HDMI</h5>
                 <p class="card-text">Accesorios</p>
                 <p class="card-text fw-bold text-success">$19.000</p>
-                <a href="#" class="btn btn-primary">Añadir</a>
+                <button class="btn btn-primary" id="producto8">Añadir</button>
               </div>
             </div>
           </div>
@@ -206,7 +220,10 @@
     <div class="container">
       <footer class="py-5 my-5 row row-cols-2 row-cols-md-5 border-top">
         <div class="mb-3 col">
-          <a href="/" class="mb-3 d-flex align-items-center link-dark text-decoration-none">
+          <a
+            href="/"
+            class="mb-3 d-flex align-items-center link-dark text-decoration-none"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-brand-apple-arcade"
@@ -238,33 +255,63 @@
         <div class="mb-3 col">
           <h5>Section</h5>
           <ul class="nav flex-column">
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">Home</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">Features</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">Pricing</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">FAQs</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">About</a></li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">Home</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">Features</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">Pricing</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">FAQs</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">About</a>
+            </li>
           </ul>
         </div>
 
         <div class="mb-3 col">
           <h5>Section</h5>
           <ul class="nav flex-column">
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">Home</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">Features</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">Pricing</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">FAQs</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">About</a></li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">Home</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">Features</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">Pricing</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">FAQs</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">About</a>
+            </li>
           </ul>
         </div>
 
         <div class="mb-3 col">
           <h5>Section</h5>
           <ul class="nav flex-column">
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">Home</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">Features</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">Pricing</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">FAQs</a></li>
-            <li class="mb-2 nav-item"><a href="#" class="p-0 nav-link text-muted">About</a></li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">Home</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">Features</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">Pricing</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">FAQs</a>
+            </li>
+            <li class="mb-2 nav-item">
+              <a href="#" class="p-0 nav-link text-muted">About</a>
+            </li>
           </ul>
         </div>
       </footer>
