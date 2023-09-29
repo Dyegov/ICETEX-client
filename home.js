@@ -76,7 +76,10 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) ?? [];
 let cartDescription = document.querySelector("#cart-description");
 let buyButton = document.querySelector("#buy-button");
 
-let total = carrito.reduce((accum, current) => accum + current.price, 0);
+let total = carrito.reduce(
+  (accum, current) => accum + current.amount * current.price,
+  0
+);
 
 let cartContent = document.querySelector("#cart-content");
 
@@ -205,6 +208,8 @@ let addCartItem = (item) => {
     const index = carrito.findIndex((cartItem) => cartItem.id === item.id);
     const oldCarrito = [...carrito];
     oldCarrito[index].amount -= 1;
+    total -= oldCarrito[index].price;
+    cartTotalAmount.innerHTML = currency.format(total);
     carrito = oldCarrito;
     const amount = (itemAmount.innerHTML = carrito.find(
       (cartItem) => cartItem.id === item.id
@@ -222,6 +227,8 @@ let addCartItem = (item) => {
     const index = carrito.findIndex((cartItem) => cartItem.id === item.id);
     const oldCarrito = [...carrito];
     oldCarrito[index].amount += 1;
+    total += oldCarrito[index].price;
+    cartTotalAmount.innerHTML = currency.format(total);
     carrito = oldCarrito;
     itemAmount.innerHTML = carrito.find(
       (cartItem) => cartItem.id === item.id
