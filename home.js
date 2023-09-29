@@ -150,6 +150,8 @@ products.forEach((product) => {
 
     total += product.price;
     cartTotalAmount.innerHTML = currency.format(total);
+    carritoButton.innerHTML =
+      carrito.length > 0 ? `Carrito (${carrito.length})` : "Carrito";
   });
 
   cardBody.appendChild(cardTitle);
@@ -178,6 +180,7 @@ let cartItem = (item) => {
 
   let itemTitle = document.createElement("h5");
   itemTitle.innerHTML = item.title;
+  itemTitle.classList.add("col-6", "text-truncate");
 
   let itemPriceDelete = document.createElement("div");
 
@@ -186,7 +189,7 @@ let cartItem = (item) => {
   itemPrice.classList.add("align-middle");
 
   let itemDelete = document.createElement("button");
-  itemDelete.innerHTML = "X";
+  itemDelete.innerHTML = "x";
   itemDelete.classList.add("btn", "btn-danger");
   itemDelete.addEventListener("click", () => {
     deleteCartItem(item);
@@ -206,6 +209,8 @@ carrito.forEach((item) => {
 });
 
 const deleteCartItem = (item) => {
+  const index = carrito.findIndex((cartItem) => cartItem.id === item.id);
+  carrito.splice(index, 1);
   carrito = carrito.filter((cartItem) => cartItem.id !== item.id);
   localStorage.setItem("carrito", JSON.stringify(carrito));
 
@@ -214,6 +219,8 @@ const deleteCartItem = (item) => {
 
   total -= item.price;
   cartTotalAmount.innerHTML = currency.format(total);
+  carritoButton.innerHTML =
+    carrito.length > 0 ? `Carrito (${carrito.length})` : "Carrito";
 
   if (carrito.length < 1) {
     cartDescription.innerHTML = "No hay productos en el carrito.";
@@ -221,3 +228,7 @@ const deleteCartItem = (item) => {
     cartTotal.style.display = "none";
   }
 };
+
+let carritoButton = document.querySelector("#carrito-button");
+carritoButton.innerHTML =
+  carrito.length > 0 ? `Carrito (${carrito.length})` : "Carrito";
