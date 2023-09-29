@@ -171,7 +171,12 @@ products.forEach((product) => {
     total += product.price;
     cartTotalAmount.innerHTML = currency.format(total);
     carritoButton.innerHTML =
-      carrito.length > 0 ? `Carrito (${carrito.length})` : "Carrito";
+      carrito.length > 0
+        ? `Carrito (${carrito.reduce(
+            (accum, current) => accum + current.amount,
+            0
+          )})`
+        : "Carrito";
   });
 
   cardBody.appendChild(cardTitle);
@@ -215,6 +220,13 @@ let addCartItem = (item) => {
     total -= oldCarrito[index].price;
     cartTotalAmount.innerHTML = currency.format(total);
     carrito = oldCarrito;
+    carritoButton.innerHTML =
+      carrito.length > 0
+        ? `Carrito (${carrito.reduce(
+            (accum, current) => accum + current.amount,
+            0
+          )})`
+        : "Carrito";
     const amount = (itemAmount.innerHTML = carrito.find(
       (cartItem) => cartItem.id === item.id
     ).amount);
@@ -234,6 +246,13 @@ let addCartItem = (item) => {
     total += oldCarrito[index].price;
     cartTotalAmount.innerHTML = currency.format(total);
     carrito = oldCarrito;
+    carritoButton.innerHTML =
+      carrito.length > 0
+        ? `Carrito (${carrito.reduce(
+            (accum, current) => accum + current.amount,
+            0
+          )})`
+        : "Carrito";
     itemAmount.innerHTML = carrito.find(
       (cartItem) => cartItem.id === item.id
     ).amount;
@@ -290,7 +309,12 @@ const deleteCartItem = (item) => {
   total -= item.price;
   cartTotalAmount.innerHTML = currency.format(total);
   carritoButton.innerHTML =
-    carrito.length > 0 ? `Carrito (${carrito.length})` : "Carrito";
+    carrito.length > 0
+      ? `Carrito (${carrito.reduce(
+          (accum, current) => accum + current.amount,
+          0
+        )})`
+      : "Carrito";
 
   let cardButton = document.getElementById(`card-button-${item.id}`);
   cardButton.classList.remove("btn-success");
@@ -304,4 +328,9 @@ const deleteCartItem = (item) => {
 
 let carritoButton = document.querySelector("#carrito-button");
 carritoButton.innerHTML =
-  carrito.length > 0 ? `Carrito (${carrito.length})` : "Carrito";
+  carrito.length > 0
+    ? `Carrito (${carrito.reduce(
+        (accum, current) => accum + current.amount,
+        0
+      )})`
+    : "Carrito";
