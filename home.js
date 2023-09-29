@@ -136,7 +136,10 @@ products.forEach((product) => {
   cardPrice.innerHTML = currency.format(product.price);
 
   let cardButton = document.createElement("button");
+  cardButton.id = `card-button-${product.id}`;
   cardButton.classList.add("btn", "btn-primary");
+  if (carrito.find((cartItem) => cartItem.id === product.id))
+    cardButton.classList.add("btn-success");
   cardButton.innerHTML = "Añadir";
 
   cardButton.addEventListener("click", () => {
@@ -153,6 +156,7 @@ products.forEach((product) => {
         ...product,
         amount: 1,
       });
+      cardButton.classList.add("btn-success");
       addCartItem(product);
     }
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -287,6 +291,9 @@ const deleteCartItem = (item) => {
   cartTotalAmount.innerHTML = currency.format(total);
   carritoButton.innerHTML =
     carrito.length > 0 ? `Carrito (${carrito.length})` : "Carrito";
+
+  let cardButton = document.getElementById(`card-button-${item.id}`);
+  cardButton.classList.remove("btn-success");
 
   if (carrito.length < 1) {
     cartDescription.innerHTML = "No hay productos en el carrito.";
