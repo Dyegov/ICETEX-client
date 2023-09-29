@@ -75,145 +75,67 @@
               <a class="nav-link" href="/admin.html">Admin</a>
             </li>
           </ul>
-          <form
-            class="gap-2 my-2 form-inline my-lg-0 d-flex align-items-center"
-          >
-            <a class="nav-link text-primary" href="/contact.html"
-              >Contáctanos</a
+          <div class="d-flex gap-2">
+            <form
+              class="gap-2 my-2 form-inline my-lg-0 d-flex align-items-center"
             >
-            <input
-              class="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="my-2 btn btn-outline-success my-sm-0" type="submit">
-              Search
+              <a class="nav-link text-primary" href="/contact.html"
+                >Contáctanos</a
+              >
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button
+                class="my-2 btn btn-outline-success my-sm-0"
+                type="submit"
+              >
+                Search
+              </button>
+            </form>
+            <button
+              class="btn btn-primary"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
+            >
+              Carrito
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </nav>
 
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div id="cart-description">
+          Estos son los productos que has agregado a tu carrito.
+        </div>
+        <div id="cart-content"></div>
+        <button id="buy-button" class="btn btn-primary">Comprar</button>
+      </div>
+    </div>
+
     <!-- Tienda -->
     <div class="container mt-5 text-center">
-      <div class="gap-3 row">
-        <div id="info"></div>
-        <div class="col">
-          <div class="card product" style="width: 18rem">
-            <img
-            src="https://d34vmoxq6ylzee.cloudfront.net/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/6/1/612B6LA-1_T1679070655.png"
-            class="card-img-top" alt=portail_hp" />
-            <div class="card-body">
-              <h5 class="card-title">Portatil HP</h5>
-              <p class="card-text">Computadores Portátiles</p>
-              <p class="card-text fw-bold text-success">$3.500.000</p>
-              <button class="btn btn-primary" id="producto1">Añadir</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card product" style="width: 18rem">
-            <img
-            src="https://tiendasishop.com/media/catalog/product/i/p/ipad_10th_generation_wi-fi_silver_pdp_image_position-1b_coes.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700"
-            class="card-img-top" alt=portail_hp" />
-            <div class="card-body">
-              <h5 class="card-title">iPad 7ma Generación</h5>
-              <p class="card-text">Tablets</p>
-              <p class="card-text fw-bold text-success">$2.100.000</p>
-              <button class="btn btn-primary" id="producto2">Añadir</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="col">
-            <div class="card product" style="width: 18rem">
-              <img src="https://m.media-amazon.com/images/I/512ob63RWdL.jpg"
-              class="card-img-top" alt=portail_hp" />
-              <div class="card-body">
-                <h5 class="card-title">iPad Pencil</h5>
-                <p class="card-text">Accesorios</p>
-                <p class="card-text fw-bold text-success">$729.000</p>
-                <button class="btn btn-primary" id="producto3">Añadir</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="col">
-            <div class="card product" style="width: 18rem">
-              <img
-              src="https://smartjoys.co/wp-content/uploads/2022/12/Airpods3-10.jpg.webp"
-              class="card-img-top" alt=portail_hp" />
-              <div class="card-body">
-                <h5 class="card-title">Airpods 3</h5>
-                <p class="card-text">Accesorios</p>
-                <p class="card-text fw-bold text-success">$1.185.000</p>
-                <button class="btn btn-primary" id="producto4">Añadir</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="col">
-            <div class="card product" style="width: 18rem">
-              <img
-              src="https://www.lg.com/co/images/monitores/md07570237/gallery/dz1.jpg"
-              class="card-img-top" alt=portail_hp" />
-              <div class="card-body">
-                <h5 class="card-title">Monitor 27" LG</h5>
-                <p class="card-text">Monitores</p>
-                <p class="card-text fw-bold text-success">$2.400.000</p>
-                <button class="btn btn-primary" id="producto5">Añadir</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="col">
-            <div class="card product" style="width: 18rem">
-              <img
-              src="https://m.media-amazon.com/images/I/8196nDEwHnL._AC_UF1000,1000_QL80_.jpg"
-              class="card-img-top" alt=portail_hp" />
-              <div class="card-body">
-                <h5 class="card-title">Teclado Mecánico Gamer</h5>
-                <p class="card-text">Accesorios</p>
-                <p class="card-text fw-bold text-success">$269.000</p>
-                <button class="btn btn-primary" id="producto6">Añadir</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="col">
-            <div class="card product" style="width: 18rem">
-              <img src="https://m.media-amazon.com/images/I/61lCLrCtuhL.jpg"
-              class="card-img-top" alt=portail_hp" />
-              <div class="card-body">
-                <h5 class="card-title">Ratón Gamer</h5>
-                <p class="card-text">Accesorios</p>
-                <p class="card-text fw-bold text-success">$130.000</p>
-                <button class="btn btn-primary" id="producto7">Añadir</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="col">
-            <div class="card product" style="width: 18rem">
-              <img
-              src="https://jaltechsas.com/wp-content/uploads/2019/05/CABLE%20HDMI%201.8M_10045_HDMI-1.8M_1-600x600.png"
-              class="card-img-top" alt=portail_hp" />
-              <div class="card-body">
-                <h5 class="card-title">Cable HDMI</h5>
-                <p class="card-text">Accesorios</p>
-                <p class="card-text fw-bold text-success">$19.000</p>
-                <button class="btn btn-primary" id="producto8">Añadir</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="store-items" class="gap-3 row"></div>
     </div>
 
     <!-- Footer -->
