@@ -137,9 +137,22 @@ products.forEach((product) => {
   cardButton.innerHTML = "Añadir";
 
   cardButton.addEventListener("click", () => {
-    carrito?.push({ ...product, id: Math.floor(Math.random() * 100) });
+    if (carrito.some((cartItem) => cartItem.id === product.id)) {
+      const index = carrito.findIndex((cartItem) => cartItem.id === product.id);
+      const oldCarrito = [...carrito];
+      oldCarrito[index].amount += 1;
+      carrito = oldCarrito;
+      const priceContainer = document.getElementById(`cart-${product.id}`);
+      priceContainer.innerHTML = oldCarrito[index].amount;
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    } else {
+      carrito?.push({
+        ...product,
+        amount: 1,
+      });
+      addCartItem(product);
+    }
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    cartItem(product);
 
     if (carrito.length === 1) {
       cartDescription.innerHTML =
@@ -168,7 +181,7 @@ products.forEach((product) => {
   storeItems.appendChild(outerContainer);
 });
 
-let cartItem = (item) => {
+let addCartItem = (item) => {
   let itemDetails = document.createElement("div");
   itemDetails.id = item.id;
   itemDetails.classList.add(
@@ -180,7 +193,52 @@ let cartItem = (item) => {
 
   let itemTitle = document.createElement("h5");
   itemTitle.innerHTML = item.title;
-  itemTitle.classList.add("col-6", "text-truncate");
+  itemTitle.classList.add("col-4", "text-truncate", "my-auto");
+
+  let amountContainer = document.createElement("div");
+  amountContainer.classList.add("d-flex");
+
+  let decreaseButton = document.createElement("button");
+  decreaseButton.innerHTML = "-";
+  decreaseButton.classList.add("btn");
+  decreaseButton.addEventListener("click", () => {
+    const index = carrito.findIndex((cartItem) => cartItem.id === item.id);
+    const oldCarrito = [...carrito];
+    oldCarrito[index].amount -= 1;
+    carrito = oldCarrito;
+    const amount = (itemAmount.innerHTML = carrito.find(
+      (cartItem) => cartItem.id === item.id
+    ).amount);
+    if (amount <= 0) {
+      deleteCartItem(item);
+    }
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  });
+
+  let increaseButton = document.createElement("button");
+  increaseButton.innerHTML = "+";
+  increaseButton.classList.add("btn");
+  increaseButton.addEventListener("click", () => {
+    const index = carrito.findIndex((cartItem) => cartItem.id === item.id);
+    const oldCarrito = [...carrito];
+    oldCarrito[index].amount += 1;
+    carrito = oldCarrito;
+    itemAmount.innerHTML = carrito.find(
+      (cartItem) => cartItem.id === item.id
+    ).amount;
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  });
+
+  let itemAmount = document.createElement("span");
+  itemAmount.id = `cart-${item.id}`;
+  itemAmount.classList.add("my-auto");
+  itemAmount.innerHTML = carrito.find(
+    (cartItem) => cartItem.id === item.id
+  ).amount;
+
+  amountContainer.appendChild(decreaseButton);
+  amountContainer.appendChild(itemAmount);
+  amountContainer.appendChild(increaseButton);
 
   let itemPriceDelete = document.createElement("div");
 
@@ -199,13 +257,14 @@ let cartItem = (item) => {
   itemPriceDelete.appendChild(itemDelete);
 
   itemDetails.appendChild(itemTitle);
+  itemDetails.appendChild(amountContainer);
   itemDetails.appendChild(itemPriceDelete);
 
   cartContent.appendChild(itemDetails);
 };
 
 carrito.forEach((item) => {
-  cartItem(item);
+  addCartItem(item);
 });
 
 const deleteCartItem = (item) => {
