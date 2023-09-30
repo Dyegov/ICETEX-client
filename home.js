@@ -298,6 +298,7 @@ carrito.forEach((item) => {
 });
 
 const deleteCartItem = (item) => {
+  const amount = carrito.find((cartItem) => cartItem.id === item.id).amount;
   const index = carrito.findIndex((cartItem) => cartItem.id === item.id);
   carrito.splice(index, 1);
   carrito = carrito.filter((cartItem) => cartItem.id !== item.id);
@@ -306,7 +307,7 @@ const deleteCartItem = (item) => {
   let itemToDelete = document.getElementById(item.id);
   itemToDelete.remove();
 
-  total -= item.price;
+  total -= item.price * amount;
   cartTotalAmount.innerHTML = currency.format(total);
   carritoButton.innerHTML =
     carrito.length > 0
