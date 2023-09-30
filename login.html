@@ -21,7 +21,13 @@
   <body>
     <main class="form-signin">
       <form class="text-center">
-        <img class="mb-4" src="./public/favicon.png" alt="" width="72" height="57" />
+        <img
+          class="mb-4"
+          src="./public/favicon.png"
+          alt=""
+          width="72"
+          height="57"
+        />
         <h1 class="h3 mb-3 fw-normal">Login</h1>
 
         <div class="form-floating">
@@ -30,6 +36,7 @@
             class="form-control"
             id="floatingInput"
             placeholder="name@example.com"
+            required
           />
           <label for="floatingInput">Email</label>
         </div>
@@ -38,18 +45,26 @@
             type="password"
             class="form-control"
             id="floatingPassword"
+            minlength="8"
             placeholder="Password"
+            required
           />
           <label for="floatingPassword">Contraseña</label>
         </div>
 
         <div class="checkbox my-3">
-          <label> <input type="checkbox" value="remember-me" /> Recuérdame </label>
+          <label>
+            <input type="checkbox" value="remember-me" /> Recuérdame
+          </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Login</button>
+        <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">
+          Login
+        </button>
         <a href="#">Recuperar contraseña</a>
         <br />
-        <span>Aún no tienes una? Regístrate <a href="/logup.html">aquí</a></span>
+        <span
+          >Aún no tienes una? Regístrate <a href="/logup.html">aquí</a></span
+        >
         <a href="/">Regresa al inicio</a>
         <p class="mt-5 mb-3 text-muted">© 2023</p>
       </form>

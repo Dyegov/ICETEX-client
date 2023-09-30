@@ -21,15 +21,33 @@
   <body>
     <main class="form-signin">
       <form class="text-center">
-        <img class="mb-4" src="./public/favicon.png" alt="" width="72" height="57" />
+        <img
+          class="mb-4"
+          src="./public/favicon.png"
+          alt=""
+          width="72"
+          height="57"
+        />
         <h1 class="h3 mb-3 fw-normal">Registrarse</h1>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" />
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Nombre"
+            required
+          />
           <label for="floatingInput">Nombre</label>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" placeholder="Apellidos" />
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Apellidos"
+            required
+          />
           <label for="floatingInput">Apellidos</label>
         </div>
         <div class="form-floating">
@@ -38,6 +56,7 @@
             class="form-control"
             id="floatingInput"
             placeholder="name@example.com"
+            required
           />
           <label for="floatingInput">Email</label>
         </div>
@@ -46,7 +65,9 @@
             type="password"
             class="form-control"
             id="floatingPassword"
+            minlength="8"
             placeholder="Password"
+            required
           />
           <label for="floatingPassword">Contraseña</label>
         </div>
@@ -55,15 +76,21 @@
             type="password"
             class="form-control"
             id="floatingPassword"
+            minlength="8"
             placeholder="Password Confirm"
+            required
           />
           <label for="floatingPassword">Confirmar Contraseña</label>
         </div>
 
         <div class="checkbox my-3">
-          <label> <input type="checkbox" value="remember-me" /> Recuérdame </label>
+          <label>
+            <input type="checkbox" value="remember-me" /> Recuérdame
+          </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Registrarse</button>
+        <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">
+          Registrarse
+        </button>
         <span>Ya tienes cuenta? Haz Login <a href="/login.html">aquí</a></span>
         <p class="mt-5 mb-3 text-muted">© 2023</p>
       </form>
