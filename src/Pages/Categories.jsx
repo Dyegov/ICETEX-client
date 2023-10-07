@@ -35,6 +35,8 @@ const Categories = () => {
       });
       const result = await response.json();
       setCategories([...categories, { ...result }]);
+      setId("");
+      setName("");
     } else {
       const response = await fetch(`${VITE_API}/categories/${id}`, {
         method: "PUT",
@@ -101,37 +103,45 @@ const Categories = () => {
           </form>
         </Modal>
       </div>
-      <table className="table w-50 mt-5">
-        <thead>
-          <tr>
-            <th>Categoría</th>
-            <th>Opciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {categories.map((category) => (
-            <tr key={category.id}>
-              <td>{category.name}</td>
-              <td className="d-flex gap-4">
-                <button
-                  className="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                  onClick={() => editCategory(category)}
-                >
-                  Editar
-                </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => deleteCategory(category.id)}
-                >
-                  Eliminar
-                </button>
-              </td>
+      {categories.length > 0 ? (
+        <table className="table w-50 mt-5">
+          <thead>
+            <tr>
+              <th>Categoría</th>
+              <th>Opciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {categories
+              .sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
+              .map((category) => (
+                <tr key={category.id}>
+                  <td>{category.name}</td>
+                  <td className="d-flex gap-4">
+                    <button
+                      className="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      onClick={() => editCategory(category)}
+                    >
+                      Editar
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => deleteCategory(category.id)}
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      ) : (
+        <div className="text-secondary fst-italic text-center mt-5">
+          No hay categorias que mostrar.
+        </div>
+      )}
     </div>
   );
 };
