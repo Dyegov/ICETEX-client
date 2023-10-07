@@ -152,16 +152,9 @@ const Navbar = () => {
                 Search
               </button>
             </form>
-            <button
-              id="carrito-button"
-              className="btn btn-primary"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasExample"
-              aria-controls="offcanvasExample"
-            >
-              Carrito
-            </button>
+            <Link to="/carrito">
+              <button className="btn btn-success">Carrito</button>
+            </Link>
           </div>
         </div>
       </div>
