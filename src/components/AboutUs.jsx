@@ -3,7 +3,7 @@ const AboutUs = () => {
     <div className="px-4 py-5 my-5 text-center" id="about-us">
       <img
         className="mx-auto mb-4 d-block"
-        src="./public/aboutus.jpeg"
+        src="./aboutus.jpeg"
         alt="multiples dispositivos"
         loading="lazy"
       />

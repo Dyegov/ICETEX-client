@@ -6,7 +6,7 @@ const Login = () => {
       <form className="text-center">
         <img
           className="mb-4"
-          src="./public/favicon.png"
+          src="./favicon.png"
           alt=""
           width="72"
           height="57"

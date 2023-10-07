@@ -4,7 +4,7 @@ const Hero = () => {
       <div className="py-5 row flex-lg-row-reverse align-items-center justify-content-center g-5">
         <div className="col-10 col-sm-8 col-lg-6">
           <img
-            src="./public/hero.png"
+            src="./hero.png"
             className="d-block mx-lg-auto img-fluid"
             alt="header"
             width="700"
