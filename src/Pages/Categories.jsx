@@ -35,8 +35,6 @@ const Categories = () => {
       });
       const result = await response.json();
       setCategories([...categories, { ...result }]);
-      setId("");
-      setName("");
     } else {
       const response = await fetch(`${VITE_API}/categories/${id}`, {
         method: "PUT",
@@ -51,9 +49,9 @@ const Categories = () => {
       const index = categories.findIndex((category) => category.id === id);
       oldCategories[index] = result;
       setCategories(oldCategories);
-      setId("");
-      setName("");
     }
+    setId("");
+    setName("");
   };
 
   const editCategory = async (category) => {
@@ -91,6 +89,7 @@ const Categories = () => {
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
               />
             </div>
             <button
