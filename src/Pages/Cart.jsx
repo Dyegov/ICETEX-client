@@ -83,6 +83,12 @@ const Cart = () => {
           </tbody>
         </table>
       )}
+      <button
+        className="btn btn-success"
+        onClick={() => alert("Compra realizada con éxito.")}
+      >
+        Comprar
+      </button>
     </div>
   );
 };
