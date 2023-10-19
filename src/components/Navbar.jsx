@@ -6,7 +6,7 @@ const Navbar = () => {
   let location = useLocation();
 
   const [currentRoute, setCurrentRoute] = useState();
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
 
   useEffect(() => {
     setCurrentRoute(location.pathname);
@@ -155,8 +155,12 @@ const Navbar = () => {
             </form>
             <Link to="/carrito">
               <button className="btn btn-success">
-                Carrito ({cart.reduce((acc, current) => acc + current.count, 0)}
-                )
+                Carrito{" "}
+                {cart.length > 0 && (
+                  <span>
+                    ({cart.reduce((acc, current) => acc + current.count, 0)})
+                  </span>
+                )}
               </button>
             </Link>
           </div>
