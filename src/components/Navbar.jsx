@@ -11,6 +11,8 @@ const Navbar = () => {
     setCurrentRoute(location.pathname);
   }, [location]);
 
+  const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div className="container">
@@ -153,7 +155,14 @@ const Navbar = () => {
               </button>
             </form>
             <Link to="/carrito">
-              <button className="btn btn-success">Carrito</button>
+              <button className="btn btn-success">
+                Carrito{" "}
+                {cart.length > 0 && (
+                  <span>
+                    ({cart.reduce((acc, current) => acc + current.count, 0)})
+                  </span>
+                )}{" "}
+              </button>
             </Link>
           </div>
         </div>
