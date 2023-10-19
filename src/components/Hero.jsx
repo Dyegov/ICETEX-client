@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <div className="container px-4 py-5 col-xxl-8">
@@ -27,14 +29,14 @@ const Hero = () => {
             ti!
           </p>
           <div className="gap-2 d-grid d-md-flex justify-content-md-start">
-            <a href="/home.html">
+            <Link to="/home">
               <button
                 type="button"
                 className="px-4 btn btn-primary btn-lg me-md-2"
               >
                 Comprar
               </button>
-            </a>
+            </Link>
             <a href="#about">
               <button
                 type="button"
