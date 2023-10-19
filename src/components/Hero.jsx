@@ -37,7 +37,7 @@ const Hero = () => {
                 Comprar
               </button>
             </Link>
-            <a href="#about">
+            <a href="#about-us">
               <button
                 type="button"
                 className="px-4 btn btn-outline-secondary btn-lg"

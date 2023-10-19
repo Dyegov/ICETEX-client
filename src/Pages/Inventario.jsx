@@ -1,9 +1,9 @@
 import { products } from "../products";
 
 const Inventario = () => {
-  const cart = JSON.parse(localStorage.getItem("carrito")) ?? [];
+  const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
   const cartAmount = (itemId) => {
-    return cart.find((cartItem) => cartItem.id === itemId)?.amount ?? 0;
+    return cart.find((cartItem) => cartItem.id === itemId)?.count ?? 0;
   };
 
   return (
