@@ -1,6 +1,24 @@
-import { products } from "../products";
+import { useEffect, useState } from "react";
 
 const Inventario = () => {
+  const { VITE_API } = import.meta.env;
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const response = await fetch(`${VITE_API}/products`, {
+        headers: {
+          Accept: "Application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await response.json();
+      setProducts(result);
+    };
+    getProducts();
+  }, [VITE_API]);
+
   const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
   const cartAmount = (itemId) => {
     return cart.find((cartItem) => cartItem.id === itemId)?.count ?? 0;

@@ -16,6 +16,7 @@ import Login from "./Pages/Login.jsx";
 import Logup from "./Pages/Logup.jsx";
 import Home from "./Pages/Home.jsx";
 import Cart from "./Pages/Cart.jsx";
+import Categories from "./Pages/Categories.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="/logup" element={<Logup />} />
       <Route path="/home" element={<Home />} />
       <Route path="/carrito" element={<Cart />} />
+      <Route path="/categorias" element={<Categories />} />
     </Route>
   )
 );

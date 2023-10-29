@@ -6,11 +6,12 @@ const Navbar = () => {
   let location = useLocation();
 
   const [currentRoute, setCurrentRoute] = useState();
-  const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
 
   useEffect(() => {
     setCurrentRoute(location.pathname);
   }, [location]);
+
+  const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
@@ -160,7 +161,7 @@ const Navbar = () => {
                   <span>
                     ({cart.reduce((acc, current) => acc + current.count, 0)})
                   </span>
-                )}
+                )}{" "}
               </button>
             </Link>
           </div>
