@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { currency } from "../utils/currency";
+import { useLoggedUser } from "../hooks/useLoggedUser";
 
 const Cart = () => {
+  const { VITE_API } = import.meta.env;
+  const { loggedUser } = useLoggedUser();
+
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -30,6 +34,30 @@ const Cart = () => {
       setCart(oldCart);
       localStorage.setItem("cart", JSON.stringify(oldCart));
     }
+  };
+
+  const completePurchase = async () => {
+    const purchase = {
+      userId: loggedUser.data.id,
+      products: cart.map((product) => product.id),
+      total: cart.reduce(
+        (acc, current) => acc + current.count * current.price,
+        0
+      ),
+    };
+
+    await fetch(`${VITE_API}/purchases`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(purchase),
+    });
+
+    setCart([]);
+    localStorage.removeItem("cart");
+    alert("Compra realizada con éxito.");
   };
 
   return (
@@ -83,12 +111,11 @@ const Cart = () => {
           </tbody>
         </table>
       )}
-      <button
-        className="btn btn-success"
-        onClick={() => alert("Compra realizada con éxito.")}
-      >
-        Comprar
-      </button>
+      {cart.length > 0 && (
+        <button className="btn btn-success" onClick={completePurchase}>
+          Comprar
+        </button>
+      )}
     </div>
   );
 };
