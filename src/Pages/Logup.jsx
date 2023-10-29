@@ -1,9 +1,36 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Logup = () => {
+  const { VITE_API } = import.meta.env;
+
+  let navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmationPassword, setConfirmationPassword] = useState("");
+
+  const signUp = async (e) => {
+    e.preventDefault();
+    await fetch(`${VITE_API}/users`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+
+    navigate("/home");
+  };
+
   return (
     <main className="form-signin">
-      <form className="text-center">
+      <form className="text-center" onSubmit={signUp}>
         <img
           className="mb-4"
           src="./favicon.png"
@@ -13,65 +40,53 @@ const Logup = () => {
         />
         <h1 className="h3 mb-3 fw-normal">Registrarse</h1>
 
-        <div className="form-floating">
-          <input
-            type="text"
-            className="form-control"
-            id="floatingInput"
-            placeholder="Nombre"
-            required
-          />
-          <label htmlFor="floatingInput">Nombre</label>
-        </div>
-        <div className="form-floating">
-          <input
-            type="text"
-            className="form-control"
-            id="floatingInput"
-            placeholder="Apellidos"
-            required
-          />
-          <label htmlFor="floatingInput">Apellidos</label>
-        </div>
-        <div className="form-floating">
+        <div className="form-floating mb-3">
           <input
             type="email"
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <label htmlFor="floatingInput">Email</label>
         </div>
-        <div className="form-floating">
+        <div className="form-floating mb-3">
           <input
             type="password"
             className="form-control"
             id="floatingPassword"
             minLength="8"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
           <label htmlFor="floatingPassword">Contraseña</label>
         </div>
-        <div className="form-floating">
+        <div className="form-floating mb-3">
           <input
             type="password"
             className="form-control"
-            id="floatingPassword"
+            id="floatingPasswordConfirm"
             minLength="8"
             placeholder="Password Confirm"
+            value={confirmationPassword}
+            onChange={(e) => setConfirmationPassword(e.target.value)}
             required
           />
           <label htmlFor="floatingPassword">Confirmar Contraseña</label>
+          {password !== confirmationPassword && (
+            <div className="text-danger">Las contraseñas no coinciden.</div>
+          )}
         </div>
 
-        <div className="checkbox my-3">
-          <label>
-            <input type="checkbox" value="remember-me" /> Recuérdame
-          </label>
-        </div>
-        <button className="w-100 btn btn-lg btn-primary mb-3" type="submit">
+        <button
+          disabled={password !== confirmationPassword}
+          className="w-100 btn btn-lg btn-primary mb-3"
+          type="submit"
+        >
           Registrarse
         </button>
         <span>
