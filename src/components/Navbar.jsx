@@ -1,18 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useLoggedUser } from "../hooks/useLoggedUser";
 
 const Navbar = () => {
-  let location = useLocation();
   const navigate = useNavigate();
   const { loggedUser } = useLoggedUser();
-
-  const [currentRoute, setCurrentRoute] = useState();
-
-  useEffect(() => {
-    setCurrentRoute(location.pathname);
-  }, [location]);
 
   const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
 
@@ -56,54 +48,39 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-            {currentRoute !== "/admin" ? (
-              <>
-                {!loggedUser && (
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/login">
-                      Iniciar Sesión
+
+            {loggedUser && loggedUser.data.role.name === "Administrator" && (
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Admin
+                </a>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link className="dropdown-item" to="/inventario">
+                      Inventario
                     </Link>
                   </li>
-                )}
-                {loggedUser && (
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/admin">
-                      Admin
+                  <li>
+                    <Link className="dropdown-item" to="/categorias">
+                      Categorías
                     </Link>
                   </li>
-                )}
-              </>
-            ) : (
-              loggedUser && (
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Admin
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <Link className="dropdown-item" to="/inventario">
-                        Inventario
-                      </Link>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Historial Compras
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Generar Venta
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              )
+                </ul>
+              </li>
+            )}
+
+            {!loggedUser && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Iniciar Sesión
+                </Link>
+              </li>
             )}
           </ul>
           <div className="d-flex gap-2">
