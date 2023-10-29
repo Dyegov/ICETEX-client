@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { useLoggedUser } from "../utils/useLoggedUser";
+import { useLoggedUser } from "../hooks/useLoggedUser";
 
 const Navbar = () => {
   let location = useLocation();

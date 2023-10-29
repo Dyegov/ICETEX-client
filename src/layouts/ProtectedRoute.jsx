@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { useLoggedUser } from "../utils/useLoggedUser";
+import { useLoggedUser } from "../hooks/useLoggedUser";
 
 const ProtectedRoute = ({ children }) => {
   const { loggedUser } = useLoggedUser();
