@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useLoggedUser } from "../hooks/useLoggedUser";
 
 const Navbar = () => {
   let location = useLocation();
+  const navigate = useNavigate();
   const { loggedUser } = useLoggedUser();
 
   const [currentRoute, setCurrentRoute] = useState();
@@ -124,16 +125,41 @@ const Navbar = () => {
               </button>
             </form>
             {loggedUser && (
-              <Link to="/carrito">
-                <button className="btn btn-success">
-                  Carrito{" "}
-                  {cart.length > 0 && (
-                    <span>
-                      ({cart.reduce((acc, current) => acc + current.count, 0)})
-                    </span>
-                  )}{" "}
-                </button>
-              </Link>
+              <>
+                <Link to="/carrito">
+                  <button className="btn btn-success">
+                    Carrito{" "}
+                    {cart.length > 0 && (
+                      <span>
+                        ({cart.reduce((acc, current) => acc + current.count, 0)}
+                        )
+                      </span>
+                    )}{" "}
+                  </button>
+                </Link>
+                <div className="dropdown">
+                  <button
+                    className="d-flex align-items-center justify-content-center bg-secondary-subtle px-2 rounded border-0"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img src="./user.png" alt="User Prolfile" width={25} />
+                  </button>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => {
+                          localStorage.clear();
+                          navigate("/");
+                        }}
+                      >
+                        Cerrar Sessión
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </>
             )}
           </div>
         </div>
