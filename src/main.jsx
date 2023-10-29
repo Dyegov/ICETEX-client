@@ -18,6 +18,7 @@ import Home from "./Pages/Home.jsx";
 import Cart from "./Pages/Cart.jsx";
 import Categories from "./Pages/Categories.jsx";
 import ProtectedRoute from "./layouts/ProtectedRoute.jsx";
+import Purchases from "./pages/Purchases.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -63,6 +64,14 @@ const router = createBrowserRouter(
         element={
           <ProtectedRoute>
             <Categories />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/compras"
+        element={
+          <ProtectedRoute>
+            <Purchases />
           </ProtectedRoute>
         }
       />

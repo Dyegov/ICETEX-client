@@ -71,6 +71,11 @@ const Navbar = () => {
                       Categorías
                     </Link>
                   </li>
+                  <li>
+                    <Link className="dropdown-item" to="/compras">
+                      Compras
+                    </Link>
+                  </li>
                 </ul>
               </li>
             )}

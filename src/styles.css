@@ -27,3 +27,12 @@
   height: 10em;
   object-fit: cover;
 }
+
+table {
+  border-collapse: separate;
+  border-spacing: 2em 0;
+}
+
+td {
+  padding: 0.5em 0;
+}
