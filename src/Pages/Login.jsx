@@ -45,9 +45,10 @@ const Login = () => {
         </button>
         <a href="#">Recuperar contraseña</a>
         <br />
-        <span>
+        <span className="text-nowrap">
           Aún no tienes una? Regístrate <Link to="/logup">aquí</Link>
         </span>
+        <br />
         <a href="/">Regresa al inicio</a>
         <p className="mt-5 mb-3 text-muted">© 2023</p>
       </form>
