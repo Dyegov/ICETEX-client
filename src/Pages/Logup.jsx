@@ -12,7 +12,7 @@ const Logup = () => {
 
   const signUp = async (e) => {
     e.preventDefault();
-    await fetch(`${VITE_API}/users/signup`, {
+    const response = await fetch(`${VITE_API}/users/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -27,6 +27,10 @@ const Logup = () => {
     setEmail("");
     setPassword("");
     setConfirmationPassword("");
+
+    const result = await response.json();
+    localStorage.setItem("token", result.token);
+
     navigate("/home");
   };
 

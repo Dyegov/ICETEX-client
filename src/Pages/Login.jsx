@@ -27,6 +27,9 @@ const Login = () => {
       setEmail("");
       setPassword("");
 
+      const result = await response.json();
+      localStorage.setItem("token", result.token);
+
       navigate("/home");
     } else {
       setEmail("");

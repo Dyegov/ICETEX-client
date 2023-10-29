@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { useLoggedUser } from "../utils/useLoggedUser";
 
 const Navbar = () => {
   let location = useLocation();
+  const { loggedUser } = useLoggedUser();
 
   const [currentRoute, setCurrentRoute] = useState();
 
@@ -46,18 +48,32 @@ const Navbar = () => {
                 Nosotros
               </HashLink>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/home">
-                Tienda
-              </Link>
-            </li>
+            {loggedUser && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/home">
+                  Tienda
+                </Link>
+              </li>
+            )}
             {currentRoute !== "/admin" ? (
               <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/login">
-                    Iniciar Sesión
-                  </Link>
-                </li>
+                {!loggedUser && (
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/login">
+                      Iniciar Sesión
+                    </Link>
+                  </li>
+                )}
+                {loggedUser && (
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/admin">
+                      Admin
+                    </Link>
+                  </li>
+                )}
+              </>
+            ) : (
+              loggedUser && (
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
@@ -66,74 +82,27 @@ const Navbar = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Usuario
+                    Admin
                   </a>
                   <ul className="dropdown-menu">
                     <li>
+                      <Link className="dropdown-item" to="/inventario">
+                        Inventario
+                      </Link>
+                    </li>
+                    <li>
                       <a className="dropdown-item" href="#">
-                        Perfil
+                        Historial Compras
                       </a>
                     </li>
                     <li>
                       <a className="dropdown-item" href="#">
-                        Carrito
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Historial
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Configuración
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Cerrar Sesión
+                        Generar Venta
                       </a>
                     </li>
                   </ul>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/admin">
-                    Admin
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Admin
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link className="dropdown-item" to="/inventario">
-                      Inventario
-                    </Link>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Historial Compras
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Generar Venta
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              )
             )}
           </ul>
           <div className="d-flex gap-2">
@@ -154,16 +123,18 @@ const Navbar = () => {
                 Search
               </button>
             </form>
-            <Link to="/carrito">
-              <button className="btn btn-success">
-                Carrito{" "}
-                {cart.length > 0 && (
-                  <span>
-                    ({cart.reduce((acc, current) => acc + current.count, 0)})
-                  </span>
-                )}{" "}
-              </button>
-            </Link>
+            {loggedUser && (
+              <Link to="/carrito">
+                <button className="btn btn-success">
+                  Carrito{" "}
+                  {cart.length > 0 && (
+                    <span>
+                      ({cart.reduce((acc, current) => acc + current.count, 0)})
+                    </span>
+                  )}{" "}
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
