@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Logup = () => {
   const { VITE_API } = import.meta.env;
@@ -13,7 +12,7 @@ const Logup = () => {
 
   const signUp = async (e) => {
     e.preventDefault();
-    await fetch(`${VITE_API}/users`, {
+    await fetch(`${VITE_API}/users/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -25,6 +24,9 @@ const Logup = () => {
       }),
     });
 
+    setEmail("");
+    setPassword("");
+    setConfirmationPassword("");
     navigate("/home");
   };
 
